@@ -58,7 +58,7 @@ async function generateDocumentation({ isCommited }: { isCommited: boolean }) {
             ## Commands
 
             ${block(COMMANDS.map(({ name, documentationUrl }) => `- [${name}](${documentationUrl})`).join('\n'))}
-          
+
         `,
     );
 

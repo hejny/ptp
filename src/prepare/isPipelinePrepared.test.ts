@@ -13,13 +13,13 @@ describe('how isPipelinePrepared works', () => {
 
     it('should tell that simple pipeline is always prepared', () => {
         expect(isPipelinePrepared(unpreparePipeline(importPipelineJson('01-simple.book.json')))).toBe(true);
-        expect(isPipelinePrepared(parsePipeline(importPipelineWithoutPreparation('01-simple.book.md')))).toBe(true);
+        expect(isPipelinePrepared(parsePipeline(importPipelineWithoutPreparation('01-simple.book')))).toBe(true);
         // Note: [🍫]
     });
 
     it('should tell that pipeline is NOT prepared', () => {
         expect(isPipelinePrepared(unpreparePipeline(importPipelineJson('25-simple-knowledge.book.json')))).toBe(false);
-        expect(isPipelinePrepared(parsePipeline(importPipelineWithoutPreparation('25-simple-knowledge.book.md')))).toBe(
+        expect(isPipelinePrepared(parsePipeline(importPipelineWithoutPreparation('25-simple-knowledge.book')))).toBe(
             false,
         );
     });

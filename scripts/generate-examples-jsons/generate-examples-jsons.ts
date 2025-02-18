@@ -69,11 +69,11 @@ async function generateExampleJsons({
     //                 <- Note: for example here we don`t want the [🌯]
     const executables = await $provideExecutablesForNode();
 
-    const pipelineMarkdownFilePaths = await glob(join(PROMPTBOOK_EXAMPLES_DIR, '*.book.md').split('\\').join('/'));
+    const pipelineMarkdownFilePaths = await glob(join(PROMPTBOOK_EXAMPLES_DIR, '*.book').split('\\').join('/'));
 
     /*/
     // Note: Keep for testing:
-    pipelineMarkdownFilePaths = pipelineMarkdownFilePaths.filter((path) => path.includes('simple-knowledge.book.md'));
+    pipelineMarkdownFilePaths = pipelineMarkdownFilePaths.filter((path) => path.includes('simple-knowledge.book'));
     /**/
 
     for (const pipelineMarkdownFilePath of pipelineMarkdownFilePaths) {
@@ -102,7 +102,7 @@ async function generateExampleJsons({
             await forTime(1000000);
             /**/
 
-            const pipelineJsonFilePath = pipelineMarkdownFilePath.replace(/\.book\.md$/, '.book.json');
+            const pipelineJsonFilePath = pipelineMarkdownFilePath.replace(/\.book(\.md)?$/, '.book.json');
 
             // Note: We want to ensure that the generated JSONs are logically correct
             validatePipeline(pipelineJson);

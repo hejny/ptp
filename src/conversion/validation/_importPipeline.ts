@@ -8,7 +8,7 @@ import type { string_filename } from '../../types/typeAliases';
 import type { string_json } from '../../types/typeAliases';
 
 /**
- * Import the pipeline.book.md or pipeline.book.json file
+ * Import the pipeline.book or pipeline.book.json file
  *
  * Note: Using here custom import to work in jest tests
  * Note: Using sync version is 💩 in the production code, but it's ok here in tests
@@ -16,7 +16,7 @@ import type { string_json } from '../../types/typeAliases';
  * @param path - The path to the file relative to examples/pipelines directory
  * @private internal function of tests
  */
-export function importPipelineWithoutPreparation(path: `${string}.book.md`): PipelineString;
+export function importPipelineWithoutPreparation(path: `${string}.book`): PipelineString;
 export function importPipelineWithoutPreparation(path: `${string}.book.json`): PipelineJson;
 export function importPipelineWithoutPreparation(path: string_filename): PipelineString | PipelineJson {
     const examplesDir = '../../../examples/pipelines'; // <- TODO: [🚏] DRY, to config
@@ -27,7 +27,7 @@ export function importPipelineWithoutPreparation(path: string_filename): Pipelin
         let pipeline = JSON.parse(content) as PipelineJson;
         pipeline = unpreparePipeline(pipeline);
         return pipeline;
-    } else if (path.endsWith('.book.md')) {
+    } else if (path.endsWith('.book')) {
         return validatePipelineString(content);
     } else {
         throw new Error('This should be used only for .book.md or .book.json files');
